@@ -1,25 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useReducer } from "react";
+import { reducer } from "./reducer.js";
 
-function App() {
+const App = () => {
+  const [state, dispatch] = useReducer(reducer, { count: 0 });
+
+  const increaseValue = () => {
+    dispatch({ type: "INCREMENT" });
+  };
+
+  const decreaseValue = () => {
+    dispatch({ type: "DECREMENT" });
+  };
+
+  const resetValue = () => {
+    dispatch({ type: "RESET" });
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main>
+      <div id="first-container">
+        <div class="container">
+          <h1>COUNTER</h1>
+          <span className={state.count < 0 ? "red" : "green"} id="value">
+            {state.count}
+          </span>
+          <div class="button-container">
+            <button onClick={decreaseValue} className="btn">
+              decrease
+            </button>
+            <button onClick={resetValue} className="btn">
+              reset
+            </button>
+            <button onClick={increaseValue} className="btn">
+              increase
+            </button>
+          </div>
+        </div>
+      </div>
+       
+    </main>
   );
-}
+};
 
 export default App;
