@@ -1,2 +1,2 @@
 # Altschool-Examination
-I worked on the second project in our exams.
+I worked on the second project in our examination
